@@ -34,6 +34,8 @@ php composer.phar install
 =================
 ATIVAR SERVER PHP
 
+! Select Directory Public ! 
+
 php -S localhost:port
 
 exemple
