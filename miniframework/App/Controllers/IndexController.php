@@ -1,15 +1,16 @@
 <?php
-namespace \App\Controllers;
+namespace App\Controllers;
 
-class indexController
+class IndexController
 {
-    function index()
+    public function index()
     {
-        echo 'teste';
+        echo 'Chegamos ao IndexController action index';
     }
-    function sobreNos()
-    {
 
+    public function sobreNos()
+    {
+        echo 'Chegamos ao IndexController action sobre nós';
     }
 }
 
