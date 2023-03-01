@@ -1,47 +1,26 @@
 <?php
-/* Receber as requisicoes */
+namespace App;
 
-namespace App; //referenciando o diretorio App
+use MF\Init\Bootstrap;
 
-class Route
+//Route para poder rotear 
+
+class Route extends Bootstrap
 {
-    private $routers;
-
-    //
-    public function __construct(){
-        $this->initRoutes();
-    }
-
-    public function getRouters(){
-        return $this->routers;
-    }
-
-    public function setRouters(array $routers){
-        $this->routers = $routers;
-    }
-
-    public function initRoutes()
+    protected function initRoutes()
     {
-        $route['home'] = array
-        (
+        $routes['home'] = array(
             'route' => '/',
-            'controlle' => 'indexController',
+            'controller' => 'indexController',
             'action' => 'index'
         );
 
-        $route['sobre_nos'] = array
-        (
+        $routes['sobre_nos'] = array(
             'route' => '/sobre_nos',
             'controller' => 'indexController',
             'action' => 'sobreNos'
         );
-
-        $this->setRouters($route);
-    }
-
-    public function getUrl()
-    {
-        return parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); //server -> super global do php
+        $this->setRoutes($routes);
     }
 }
 
