@@ -8,13 +8,13 @@ class IndexController extends Action
     public function index()
     {
         $this->view->dados=array('Sofá' , 'Cama' , 'Traveseeiro'); //simulacao de query do banco de dados
-        $this->render('index');
+        $this->render('index','layout3');
     }
 
     public function sobreNos()
     {
         $this->view->dados=array('Celular' , 'Computador' , 'Monitor');
-        $this->render('sobreNos');
+        $this->render('sobreNos','layout2');
     }  
 }
 
