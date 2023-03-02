@@ -2,13 +2,13 @@
 namespace MF\Controller;
 
 abstract class Action{
-    private $view;
+    protected $view;
 
     public function __construct(){
         $this->view = new \stdClass();
     }
 
-    public function render($view)
+    protected function render($view)
     {
         $className = get_class($this); //retorna da classe
         $className = str_replace('App\\Controllers\\', '', $className); //substituir App\\Controllers\\ para nada ('') 
