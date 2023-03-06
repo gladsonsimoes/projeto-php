@@ -1,34 +1,28 @@
 <?php
-namespace MF\Controller;
+    namespace MF\Controller;
 
-abstract class Action
-{
-    protected $view = 'teste';
+    abstract class Action{
+        protected $view;
 
-    public function __construct()
-    {
-        $this->view = new \stdClass();
-    }
+        public function __construct(){
+            $this->view = new \stdClass();    
+        }
 
-    protected function render($view,$layout)
-    {
-        $this->view->page = $view;
+        protected function render($view,$layout){
+            $this->view->page = $view;
 
-        if(file_exists("../App/Views/".$layout.".phtml")){
-            require_once("../App/Views/".$layout.".phtml");
+            if(file_exists("../App/Views/".$layout.".phtml")){
+                require_once "../App/Views/".$layout.".phtml";
+            }else{
+                $this->content();
+            }   
+        }
+
+        protected function content(){
+            $className = get_class($this);
+            $className = str_replace('App\\Controllers\\','',$className);
+            $className = strtolower(str_replace('Controller','',$className));
+            require_once '../App/Views/'.$className.'/'.$this->view->page.'.phtml'; 
         }
     }
-
-    protected function content($view)
-    {
-        $className = get_class($this); //retorna da classe
-        $className = str_replace('App\\Controllers\\', '', $className); //substituir App\\Controllers\\ para nada ('') 
-        $className = strtolower(str_replace('Controller', '', $className)); //substituir o controller para nada , e utilizando strtolower para deixar o nome Index para minusculo index
-        require_once '../App/Views/' . $className . '/' . $view . '.phtml';
-    }
-}
-
-
-
-
 ?>

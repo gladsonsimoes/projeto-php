@@ -1,23 +1,19 @@
 <?php
-namespace App;
+    namespace App;
 
-class Connection{
+    class Connection{
+        public static function getDb(){
+            try{
+                $conn = new \PDO (
+                    "mysql:host=localhost;dbname=mvc;charset=utf8",
+                    "root",
+                    ""
+                );
 
-// public $host = "locahost";
-// $user = "root"
-// $dbname = "mvc";
-// $pass = "";
-// $port = "3306";
-// $charset = "utf8";
-
-    public function getDb(){
-        try{
-            $conn = new PDO ("mysql:host=locahost;dbname=mvc;charset=utf8");
-
-            return $conn;
-        }catch(\PDOException $e){
-            //tratar erros
+                return $conn;
+            }catch(\PDOExeption $e){
+                //tratar erro
+            }
         }
     }
-}
 ?>
