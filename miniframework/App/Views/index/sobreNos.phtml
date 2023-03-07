@@ -1,7 +1,14 @@
 <h1>Sobre Nós</h1>
 <br>
 <?php
-    foreach($this->view->dados as $key => $value){
-        echo $value.'<br>';
-    }
+// echo "<pre>";
+//     foreach($this->view->dados as $key => $value){
+//         echo $value.'<br>';
+//     }
+//     echo "</pre>";
+
+foreach ($this->view->dados as $key => $informacoes) {
+    echo $informacoes['id'].' - <h1>'.$informacoes['titulo'].'</h1> - '.$informacoes['descricao']; //instanciando o objeto Info , que está no IndexController como $infos
+    echo '<br>';
+}
 ?>
