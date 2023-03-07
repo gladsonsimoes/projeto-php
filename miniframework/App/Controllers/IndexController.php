@@ -30,10 +30,10 @@
               $conn = Connection::getDb();
     
               //novo Objeto Info que foi criado em Models
-              $infos = new Info($conn);
+              $informacoes = new Info($conn);
   
               //novo metodo
-              $info = $infos->getInformacoes();
+              $info = $informacoes->getInformacoes();
   
               $this->view->dados = $info;
 
