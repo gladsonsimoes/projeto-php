@@ -6,6 +6,9 @@
 
     use App\Models\Produto;
 
+    use App\Models\Info;
+    
+
     class IndexController extends Action{
         public function index(){
             //$this->view->dados=array('Sofá', 'Cama','Travesseiro');
@@ -23,7 +26,17 @@
         }
         
         public function sobreNos(){
-            //$this->view->dados=array('Celular', 'Computador','Monitor');
+        
+              $conn = Connection::getDb();
+    
+              //novo Objeto Info que foi criado em Models
+              $infos = new Info($conn);
+  
+              //novo metodo
+              $info = $infos->getInformacoes();
+  
+              $this->view->dados = $info;
+
             $this->render('sobreNos','layout2');             
         }      
     }
