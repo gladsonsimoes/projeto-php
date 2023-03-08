@@ -1,44 +1,34 @@
 <?php
-    namespace App\Controllers;
-    use MF\Controller\Action; 
+namespace App\Controllers;
 
-    use App\Connection;
+use MF\Controller\Action;
+use MF\Model\Container;
 
-    use App\Models\Produto;
+class IndexController extends Action
+{
+    public function index()
+    {
 
-    use App\Models\Info;
-    
+        $produto = Container::getModel('Produto');
 
-    class IndexController extends Action{
-        public function index(){
-            //$this->view->dados=array('Sofá', 'Cama','Travesseiro');
+        $produtos = $produto->getProdutos();
 
-            //instanciar conexão
-            $conn = Connection::getDb();
-            //instanciar modelo
-            $produto = new Produto($conn);
+        $this->view->dados = $produtos;
 
-            $produtos = $produto->getProdutos();
-
-            $this->view->dados = $produtos;
-
-            $this->render('index','layout1');    
-        }
-        
-        public function sobreNos(){
-        
-              $conn = Connection::getDb();
-    
-              //novo Objeto Info que foi criado em Models
-              $informacoes = new Info($conn);
-  
-              //novo metodo
-              $info = $informacoes->getInformacoes();
-  
-              $this->view->dados = $info;
-
-            $this->render('sobreNos','layout2');             
-        }      
+        $this->render('index', 'layout1');
     }
+
+    public function sobreNos()
+    {
+
+        $informacoes = Container::getModel('Info');
+
+        $info = $informacoes->getInformacoes();
+
+        $this->view->dados = $info;
+
+        $this->render('sobreNos', 'layout2');
+    }
+}
 
 ?>
