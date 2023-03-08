@@ -11,7 +11,7 @@
                 );
 
                 return $conn;
-            }catch(\PDOExeption $e){
+            }catch(\PDOException $e){
                 //tratar erro
             }
         }
